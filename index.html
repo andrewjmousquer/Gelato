@@ -1,0 +1,292 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <title>Código 2</title>
+  <meta charset="UTF-8">
+  <div style="text-align: center;">
+    <style>
+       .imagem {
+         position: relative;
+         display: inline-block;
+         cursor: pointer;
+         margin-bottom: 20px;
+       }
+       .imagem img {
+         width: 125px;
+         height: auto;
+       }
+       .imagem .imagem-aberta {
+         display: none;
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         max-width: 100%;
+         max-height: 100%;
+       }
+   
+       /* Estilo para o pop-up de vitória */
+       .popup-vitoria {
+         display: none;
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background-color: rgba(0, 0, 0, 0.7);
+         z-index: 9999;
+         justify-content: center;
+         align-items: center;
+       }
+       .popup-vitoria-content {
+         background-color: white;
+         padding: 20px;
+         text-align: center;
+         border-radius: 10px;
+       }
+       .popup-vitoria img {
+         width: 200px;
+         height: auto;
+         margin-bottom: 20px;
+       }
+       .popup-vitoria p {
+         font-size: 24px;
+         margin-bottom: 20px;
+       }
+       .popup-vitoria button {
+         padding: 10px 20px;
+         background-color: #4CAF50;
+         color: white;
+         border: none;
+         cursor: pointer;
+         font-size: 16px;
+       }
+   
+       /* Estilo para o pop-up de derrota */
+       .popup-derrota {
+         display: none;
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background-color: rgba(0, 0, 0, 0.7);
+         z-index: 9999;
+         justify-content: center;
+         align-items: center;
+       }
+       .popup-derrota-content {
+         background-color: white;
+         padding: 20px;
+         text-align: center;
+         border-radius: 10px;
+       }
+       .popup-derrota img {
+         width: 200px;
+         height: auto;
+         margin-bottom: 20px;
+       }
+       .popup-derrota p {
+         font-size: 24px;
+         margin-bottom: 20px;
+       }
+       .popup-derrota button {
+         padding: 10px 20px;
+         background-color: #f44336;
+         color: white;
+         border: none;
+         cursor: pointer;
+         font-size: 16px;
+       }
+
+       .popup-erro {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-erro-content {
+  background-color: white;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.popup-erro img {
+  width: 200px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.popup-erro p {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.popup-erro button {
+  padding: 10px 20px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+     </style>
+</head>
+<body>
+
+
+
+<div class="imagem" onclick="abrirImagem(this, '8')">
+<img src="http://fdbkgroup.com/wp-content/uploads/2023/07/hibiscus-card-13.png" alt="Imagem fechada 8">
+<img class="imagem-aberta" src="http://fdbkgroup.com/wp-content/uploads/2023/07/hibiscus-card-24.png" alt="Imagem aberta 8">
+</div>
+
+
+
+<div class="imagem" onclick="abrirImagem(this, '7')">
+<img src="http://fdbkgroup.com/wp-content/uploads/2023/07/hibiscus-card-7.png" alt="Imagem fechada 7">
+<img class="imagem-aberta" src="http://fdbkgroup.com/wp-content/uploads/2023/07/hibiscus-card-17.png" alt="Imagem aberta 7">
+</div>
+
+
+
+<div class="imagem" onclick="abrirImagem(this, '9')">
+<img src="http://fdbkgroup.com/wp-content/uploads/2023/07/hibiscus-card-8.png" alt="Imagem fechada 9">
+<img class="imagem-aberta" src="http://fdbkgroup.com/wp-content/uploads/2023/07/hibiscus-card-18.png" alt="Imagem aberta 9">
+</div>
+
+
+<div class="imagem" onclick="abrirImagem(this, '12')">
+<img src="http://fdbkgroup.com/wp-content/uploads/2023/07/hibiscus-card-15.png" alt="Imagem fechada 12">
+<img class="imagem-aberta" src="http://fdbkgroup.com/wp-content/uploads/2023/07/hibiscus-card-27.png" alt="Imagem aberta 12">
+</div>
+
+
+<div class="imagem" onclick="abrirImagem(this, '11')">
+<img src="http://fdbkgroup.com/wp-content/uploads/2023/07/hibiscus-card-9.png" alt="Imagem fechada 11">
+<img class="imagem-aberta" src="http://fdbkgroup.com/wp-content/uploads/2023/07/hibiscus-card-19.png" alt="Imagem aberta 11">
+</div>
+
+
+<div class="imagem" onclick="abrirImagem(this, '10')">
+<img src="http://fdbkgroup.com/wp-content/uploads/2023/07/hibiscus-card-14.png" alt="Imagem fechada 10">
+<img class="imagem-aberta" src="http://fdbkgroup.com/wp-content/uploads/2023/07/hibiscus-card-erros-certos-20-cópiaerros-certos.png" alt="Imagem aberta 10">
+</div>
+
+
+<!-- Pop-up de Vitória -->
+<div class="popup-vitoria" id="pop-up-vitoria">
+<div class="popup-vitoria-content">
+  <img src="https://bits0.com/cepas/richcontent/gancia-americano/GanciasiempreGifV2.gif" alt="Imagem Vitoria">
+  <p>¡ESA! Ganaste 1 trago Hibiscus Tónic.</p>
+  <button onclick="fecharPopupVitoria()">Seguir Intentando</button>
+</div>
+</div>
+
+<!-- Pop-up de Derrota -->
+<div class="popup-derrota" id="pop-up-derrota">
+<div class="popup-derrota-content">
+  <img src="http://fdbkgroup.com/wp-content/uploads/2023/07/logo-gancia-hibiscus-e1689351332343.png" alt="Imagem Derrota">
+  <p>No, eso no va en ese trago, intente denuevo!</p>
+  <button onclick="fecharPopupDerrota()">¡Gracias!</button>
+</div>
+</div>
+
+<!-- Pop-up de Erro -->
+<div class="popup-erro" id="pop-up-erro">
+    <div class="popup-erro-content">
+      <img src="http://fdbkgroup.com/wp-content/uploads/2023/07/logo-gancia-hibiscus-e1689351332343.png" alt="Imagem Erro">
+      <p>Você errou! Faltam <span id="tentativas-restantes">2</span> tentativas.</p>
+      <button onclick="fecharPopupErro()">OK</button>
+    </div>
+  </div>
+
+<script>
+var imagensCorretas = ['7', '9', '11'];
+var imagensIncorretas = ['8', '10', '12'];
+var imagensSelecionadas = [];
+var numeroAcertos = 0;
+var maximoAcertos = 3;
+var numeroErros = 0;
+var maximoErros = 3;
+var jogoFinalizado = false;
+
+function abrirImagem(element, numeroImagem) {
+    if (jogoFinalizado) return; // Se o jogo já estiver finalizado, não fazer nada
+
+    if (imagensCorretas.includes(numeroImagem)) {
+      imagensSelecionadas.push(numeroImagem);
+
+      var imagemFechada = element.querySelector('img');
+      var imagemAberta = element.querySelector('.imagem-aberta');
+      imagemFechada.style.visibility = 'hidden';
+      imagemAberta.style.display = 'block';
+
+      numeroAcertos++;
+      var acerto = maximoAcertos - numeroAcertos;
+      if (numeroAcertos >= maximoAcertos) {
+        exibirPopupVitoria();
+        jogoFinalizado = true; // Marcar o jogo como finalizado
+      }
+    } else if (imagensIncorretas.includes(numeroImagem)) {
+      imagensSelecionadas.push(numeroImagem);
+      var imagemFechada = element.querySelector('img');
+      var imagemAberta = element.querySelector('.imagem-aberta');
+      imagemFechada.style.visibility = 'hidden';
+      imagemAberta.style.display = 'block';
+
+        // Exibir mensagem de erro e quantas faltam
+    numeroErros++;
+    var faltam = maximoErros - numeroErros;
+    document.getElementById('tentativas-restantes').innerText = faltam;
+    if (numeroErros >= maximoErros) {
+      exibirPopupDerrota();
+      jogoFinalizado = true;
+    } else {
+      exibirPopupErro();
+    }
+  }
+
+  element.removeEventListener('click', abrirImagem);
+}
+  function exibirPopupVitoria() {
+    var popupVitoria = document.getElementById('pop-up-vitoria');
+    popupVitoria.style.display = 'flex';
+  }
+
+  function fecharPopupVitoria() {
+    var popupVitoria = document.getElementById('pop-up-vitoria');
+    popupVitoria.style.display = 'none';
+  }
+
+  function exibirPopupDerrota() {
+    var popupDerrota = document.getElementById('pop-up-derrota');
+    popupDerrota.style.display = 'flex';
+  }
+
+  function fecharPopupDerrota() {
+    var popupDerrota = document.getElementById('pop-up-derrota');
+    popupDerrota.style.display = 'none';
+  }
+
+  function exibirPopupErro() {
+  var popupErro = document.getElementById('pop-up-erro');
+  popupErro.style.display = 'flex';
+}
+
+    function fecharPopupErro() {
+  var popupErro = document.getElementById('pop-up-erro');
+  popupErro.style.display = 'none';
+}
+</script>
+</div>
+</body>
+</html>
